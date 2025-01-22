@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  @page {
+    margin: 0;
+    size: auto;
+  }
+  @page :first {
+    margin-top: 0;
+  }
+  @page :last {
+    margin-bottom: 0;
+  }
+  .print-this,
+  .print-this * {
+    visibility: visible;
+  }
+  .print-this {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+  }
+  .receipt-container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  .receipt-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .receipt-header h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  .receipt-header p {
+    font-size: 14px;
+    color: #666;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+  .receipt-details {
+    margin: 10px 0;
+  }
+  .receipt-details p {
+    margin: 5px 0;
+  }
+  .receipt-items {
+    margin: 10px 0;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .receipt-items th,
+  .receipt-items td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .receipt-items th {
+    background: #f4f4f4;
+  }
+  .total {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .home-page{
+    display: none;
+  }
+}
+
+.receipt-container {
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.receipt-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.receipt-header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.receipt-header p {
+  font-size: 14px;
+  color: #666;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+.receipt-details {
+  margin: 10px 0;
+}
+.receipt-details p {
+  margin: 5px 0;
+}
+.receipt-items {
+  margin: 10px 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+.receipt-items th,
+.receipt-items td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.receipt-items th {
+  background: #f4f4f4;
+}
+.total {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.payments {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: normal;
+}
