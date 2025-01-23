@@ -81,6 +81,10 @@ const Admin = () => {
             >
               Log in
             </button>
+
+            <p>For testing purpose</p>
+            <p>Admin id : Admin</p>
+            <p>Admin password : admin@123</p>
           </form>
         </div>
       )}
