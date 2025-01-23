@@ -6,6 +6,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import Receipt from "./pages/Receipt";
 import PaymentPage from "./pages/PaymentPage";
 import PageNotFound from "./pages/PageNotFound";
+import Admin from "./pages/Admin";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/receipt" element={<Receipt />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { addAmountPaid } from "../reduxStore/slices/cartSlice";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { analysis } from "../reduxStore/slices/analysisSlice";
 
 const PaymentPage = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -28,7 +29,7 @@ const PaymentPage = () => {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: false,
+        closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
@@ -51,7 +52,13 @@ const PaymentPage = () => {
       });
       return;
     }
+
+    const due = totalAmount - amountPaid;
+    const soldServices = cartItems.length;
+    const amountReceived = Number(amountPaid);
+    
     dispatch(addAmountPaid({ amountPaid, paymentMethod }));
+    dispatch(analysis({ totalAmount, amountReceived, due, soldServices }));
     toast.success("Payment Success", {
       position: "top-right",
       autoClose: 5000,
@@ -173,7 +180,7 @@ const PaymentPage = () => {
           onClick={handlePayment}
           className="mt-6 w-full py-3 bg-indigo-600 text-white text-lg font-semibold rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 transition-all"
         >
-          Proceed to Pay
+          Pay
         </button>
       </div>
     </div>
