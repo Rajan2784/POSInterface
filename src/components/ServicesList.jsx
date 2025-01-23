@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../reduxStore/slices/cartSlice";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const ServicesList = ({ services }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("all");
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
-  const HandleaddToCart = (service) => {
+  const handleAddToCart = (service) => {
     dispatch(
       addToCart({
         id: service.id,
@@ -28,6 +30,17 @@ const ServicesList = ({ services }) => {
     });
   };
 
+  // Filter services based on search query and selected filter
+  const filteredServices = services.filter((service) => {
+    const matchesSearchQuery = service.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesFilter =
+      selectedFilter === "all" || service.category === selectedFilter;
+
+    return matchesSearchQuery && matchesFilter;
+  });
+
   return (
     <>
       {/* Toast container */}
@@ -45,8 +58,33 @@ const ServicesList = ({ services }) => {
         transition={Bounce}
       />
 
+      {/* Search and Filter Section */}
+      <div className="mb-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+        {/* Search Input */}
+        <input
+          type="text"
+          placeholder="Search for services..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full md:w-1/2 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        {/* Filter Dropdown */}
+        <select
+          value={selectedFilter}
+          onChange={(e) => setSelectedFilter(e.target.value)}
+          className="w-full md:w-1/4 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="all">All Categories</option>
+          <option value="fitness">Fitness</option>
+          <option value="therapy">Therapy</option>
+          <option value="workshop">Workshops</option>
+        </select>
+      </div>
+
+      {/* Services List */}
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {services.map((service) => {
+        {filteredServices.map((service) => {
           const isInCart = cartItems.some((item) => item?.id === service?.id);
 
           return (
@@ -80,7 +118,7 @@ const ServicesList = ({ services }) => {
                   ) : (
                     <button
                       className="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-                      onClick={() => HandleaddToCart(service)}
+                      onClick={() => handleAddToCart(service)}
                     >
                       Add to Cart
                     </button>
@@ -91,6 +129,13 @@ const ServicesList = ({ services }) => {
           );
         })}
       </ul>
+
+      {/* No Results Message */}
+      {filteredServices.length === 0 && (
+        <p className="text-center text-gray-500 mt-4">
+          No services match your criteria.
+        </p>
+      )}
     </>
   );
 };

@@ -16,12 +16,14 @@ const Home = () => {
         "Experience the transformative power of yoga with our expert instructors. Our classes cater to all levels, from beginners to experienced practitioners. Improve flexibility, strength, and mental clarity while cultivating a sense of calm and well-being.",
       price: 2000,
       icon: <GrYoga />,
+      category: "fitness",
       image:
         "https://media.istockphoto.com/id/1483989758/photo/diverse-yoga-class-participants-doing-a-side-plank-on-their-yoga-mats-in-a-beautiful-yoga.webp?a=1&b=1&s=612x612&w=0&k=20&c=kEvewO27lhmnW47sP3Z-P58VvM9OutXD0l6Z9iqo680=",
     },
     {
       id: 2,
       name: "Therapy Session",
+      category: "therapy",
       description:
         "Our experienced therapists provide a safe and supportive space for you to explore personal challenges, address mental health concerns, and cultivate emotional well-being. We offer individual and couples therapy to help you achieve your goals and live a more fulfilling life.",
       price: 2500,
@@ -32,6 +34,7 @@ const Home = () => {
     {
       id: 3,
       name: "Art Workshop",
+      category: "workshop",
       description:
         "Unleash your creativity with our art workshops! Our experienced instructors will guide you through a variety of projects, from painting to sculpture. No prior experience is required - just bring your enthusiasm and an open mind.",
       price: 3000,

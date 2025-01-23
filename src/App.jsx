@@ -5,6 +5,7 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import Receipt from "./pages/Receipt";
 import PaymentPage from "./pages/PaymentPage";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/receipt" element={<Receipt />} />
         <Route path="/payment" element={<PaymentPage />} />
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
   );
